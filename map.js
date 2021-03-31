@@ -1,3 +1,12 @@
+// triple toutes les valeurs d'un tableau
+function tripleNumbers(numbers) {
+  return numbers.map((number) => {
+    return number * 3;
+  });
+}
+
+console.log(tripleNumbers([1, 2, 3]));
+
 /*
 Exemple d'entrée:
   [
@@ -14,7 +23,12 @@ En sortie: [
 ]
  */
 
-function getStringsLength(strings) {}
+function getStringsLength(strings) {
+  return strings.map((food) => {
+    return food.length;
+  });
+}
+console.log(getStringsLength(['Chicken', 'Bacon', 'Tofu', 'Mayonnaise']));
 
 /*
 Exemple d'entrée:
@@ -44,7 +58,42 @@ En sortie: [
 ]
  */
 
-function getFoodCategories(foods) {}
+function getFoodCategories(foods) {
+  return foods.map((aliment) => {
+    /*
+    aliment: {
+      food: 'Bacon',
+      isVegetarian: false
+    }
+    */
+    if (aliment.isVegetarian) {
+      return `${aliment.food} is suitable for vegetarians`;
+    } else {
+      return `${aliment.food} is not suitable for vegetarians`;
+    }
+    // 'Bacon is not suitable for vegetarians'
+  });
+}
+console.log(
+  getFoodCategories([
+    {
+      food: 'Bacon',
+      isVegetarian: false,
+    },
+    {
+      food: 'Sausage',
+      isVegetarian: false,
+    },
+    {
+      food: 'Tofu',
+      isVegetarian: true,
+    },
+    {
+      food: 'Chick Pea',
+      isVegetarian: true,
+    },
+  ])
+);
 
 /*
 Exemple d'entrée:
@@ -70,6 +119,7 @@ En sortie:
   [
     {
       name: 'Crazy Rich Asians',
+      rating: 90,
       freshness: 'certified fresh'
     },
     {
@@ -85,6 +135,43 @@ En sortie:
       freshness: 'fresh'
     }
   ]
+
+  >= 90 certified fresh
+  >= 50 fresh
+  < 50 rotten
  */
 
-function getMoviesFreshness(movies) {}
+function getMoviesFreshness(movies) {
+  return movies.map((movie) => {
+    if (movie.rating >= 90) {
+      movie.freshness = 'certified fresh';
+    } else if (movie.rating >= 50) {
+      movie.freshness = 'fresh';
+    } else {
+      movie.freshness = 'rotten';
+    }
+    delete movie.rating;
+    return movie;
+  });
+}
+
+console.log(
+  getMoviesFreshness([
+    {
+      name: 'Crazy Rich Asians',
+      rating: 93,
+    },
+    {
+      name: 'Skyscraper',
+      rating: 46,
+    },
+    {
+      name: 'Leave No Trace',
+      rating: 100,
+    },
+    {
+      name: 'White Boy Rick',
+      rating: 60,
+    },
+  ])
+);

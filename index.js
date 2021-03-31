@@ -14,3 +14,15 @@ const filterEven = numbers.forEach((number) => {
   }
 });
 console.log(numbers, newArray);
+
+const temperatures = [12.5, 20.1, 0, 30, -12];
+const converted = [];
+for (let i = 0; i < temperatures.length; i++) {
+  let temperature = temperatures[i];
+  converted.push(Math.round((temperature * 9) / 5 + 32));
+}
+
+const result = temperatures.map((temperature) =>
+  Math.round((temperature * 9) / 5 + 32)
+);
+console.log(converted, result);
